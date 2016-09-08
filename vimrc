@@ -577,6 +577,12 @@ if count(g:vimified_packages, 'colour') || count(g:vimified_packages, 'color')
   :hi TabLineFill term=bold cterm=bold ctermbg=237
 endif
 
+"
+" MQL
+"
+Plugin 'https://github.com/vobornik/vim-mql4.git'
+Plugin 'https://github.com/rupurt/vim-mql5'
+
 call vundle#end()
 filetype plugin indent on
 syntax on
