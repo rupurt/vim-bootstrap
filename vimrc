@@ -85,6 +85,9 @@ let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'lint
 " Pastel color schemes with sensible highlighting
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
+" Quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
 " Comment stuff out
 Plug 'tpope/vim-commentary'
 xmap <leader>/ <Plug>Commentary
