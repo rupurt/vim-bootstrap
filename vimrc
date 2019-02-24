@@ -187,6 +187,8 @@ autocmd BufWritePre *.rb,*.yml,*.js,*jsx,*.css,*.less,*.sass,*.scss,*.html,*.xml
 "
 """""""""""""""""""""""""""""""""""""""
 
+nmap \ :Explore<CR>
+
 " clear the search buffer when hitting space
 :nnoremap <space> :nohlsearch<cr>
 
