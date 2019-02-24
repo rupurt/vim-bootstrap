@@ -41,9 +41,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 map <silent> <leader>f :FZF<CR>
 map <leader>b :Buffers<CR>
-
-" Sed across quickfix buffers
-Plug 'Peeja/vim-cdo'
+let g:fzf_layout = { 'down': '~30%' }
 
 " Vertical selection
 Plug 'terryma/vim-multiple-cursors'
