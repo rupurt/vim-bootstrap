@@ -109,10 +109,9 @@ ty = toggle fullscreen mode off
 ,g = git blame
 ```
 
-### Nerd Tree
+### Netrw
 ```
-\ = toggle tree
-<shift>\ = toggle tree and focus on current file
+\ = toggle Explore
 ```
 
 ### Commentary
