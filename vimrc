@@ -51,8 +51,18 @@ Plug 'sheerun/vim-polyglot'
 
 " Async linting/fixing engine
 Plug 'w0rp/ale'
-let g:ale_linters = {'elixir': ['elixir-ls', 'mix'], 'javascript': ['prettier'], 'css': ['prettier']}
-let g:ale_fixers = {'elixir': ['mix_format'], 'javascript':  ['prettier'], 'css': ['prettier']}
+let g:ale_linters = {
+  \ 'elixir': ['elixir-ls', 'mix'],
+  \ 'typescript': ['tslint'],
+  \ 'javascript': ['prettier'],
+  \ 'css': ['prettier']
+  \ }
+let g:ale_fixers = {
+  \ 'elixir': ['mix_format'],
+  \ 'typescript': ['tslint'],
+  \ 'javascript':  ['prettier'],
+  \ 'css': ['prettier']
+  \ }
 let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
 let g:ale_fix_on_save = 1
 nmap <leader>d <Plug>(ale_go_to_definition)
