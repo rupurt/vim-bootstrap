@@ -2,9 +2,12 @@ set nocompatible
 filetype on
 filetype off
 
-" share vimrc initialization between vim & nvim
+" Share vimrc initialization between vim & nvim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+
+" Yank to system clipboard
+set clipboard=unnamed
 
 let mapleader = ','
 
