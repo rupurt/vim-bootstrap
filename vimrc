@@ -57,7 +57,7 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
   \ 'go': ['gofmt'],
   \ 'elixir': ['elixir-ls', 'mix'],
-  \ 'typescript': ['tslint'],
+  \ 'typescript': ['tslint', 'tsserver'],
   \ 'javascript': ['prettier', 'eslint'],
   \ 'css': ['prettier']
   \ }
@@ -65,7 +65,7 @@ let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'elixir': ['mix_format'],
   \ 'typescript': ['tslint'],
-  \ 'javascript':  ['prettier', 'eslint'],
+  \ 'javascript':  ['prettier_standard', 'prettier', 'eslint'],
   \ 'css': ['prettier']
   \ }
 let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
