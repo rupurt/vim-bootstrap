@@ -74,6 +74,8 @@ nmap <leader>d <Plug>(ale_go_to_definition)
 
 " Async intellisense
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
 " Fast & minimal powerline
 Plug 'itchyny/lightline.vim'
