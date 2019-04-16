@@ -57,14 +57,14 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
   \ 'go': ['gofmt'],
   \ 'elixir': ['elixir-ls', 'mix'],
-  \ 'typescript': ['tslint', 'tsserver'],
-  \ 'javascript': ['prettier', 'eslint'],
+  \ 'typescript': ['eslint', 'tsserver'],
+  \ 'javascript': ['prettier_standard', 'prettier', 'eslint'],
   \ 'css': ['prettier']
   \ }
 let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'elixir': ['mix_format'],
-  \ 'typescript': ['tslint'],
+  \ 'typescript': ['prettier_standard', 'eslint'],
   \ 'javascript':  ['prettier_standard', 'prettier', 'eslint'],
   \ 'css': ['prettier']
   \ }
