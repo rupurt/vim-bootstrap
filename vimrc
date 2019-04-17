@@ -55,7 +55,7 @@ Plug 'sheerun/vim-polyglot'
 " Async linting/fixing engine
 Plug 'w0rp/ale'
 let g:ale_linters = {
-  \ 'go': ['gofmt'],
+  \ 'go': ['gopls'],
   \ 'elixir': ['elixir-ls', 'mix'],
   \ 'typescript': ['eslint', 'tsserver'],
   \ 'javascript': ['prettier_standard', 'prettier', 'eslint'],

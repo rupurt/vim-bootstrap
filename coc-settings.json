@@ -3,6 +3,10 @@
     "elixir": {
       "command": "elixir-ls",
       "filetypes": ["elixir", "eelixir"]
+    },
+    "golang": {
+      "command": "gopls",
+      "filetypes": ["go"]
     }
   }
 }
