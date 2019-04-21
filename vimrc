@@ -40,7 +40,7 @@ endif
 
 " Command line fuzzy finder
 " Much faster than ctrlp, especially on large screens
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 map <silent> <leader>f :FZF<CR>
 map <leader>b :Buffers<CR>
