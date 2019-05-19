@@ -197,7 +197,7 @@ function! StripTrailingWhitespace()
   %s/\s\+$//e
   call setpos('.', save_cursor)
 endfunction
-autocmd BufWritePre *.rb,*.yml,*.js,*jsx,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.coffee call StripTrailingWhitespace()
+autocmd BufWritePre *.rb,*.yml,*.js,*jsx,*.ts,*.tsx,*.exs,*.ex,*.go,*.rs,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.coffee call StripTrailingWhitespace()
 
 "
 " Keybindings
