@@ -76,6 +76,8 @@ nmap <leader>d <Plug>(ale_go_to_definition)
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+" Remap for refactor current word
+nmap <leader>rf <Plug>(coc-refactor)
 
 " Fast & minimal powerline
 Plug 'itchyny/lightline.vim'
