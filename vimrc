@@ -105,6 +105,9 @@ Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 " Quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
 
+" Remaps . in a way that plugins can tap into
+Plug 'tpope/vim-repeat'
+
 " Comment stuff out
 Plug 'tpope/vim-commentary'
 xmap <leader>/ <Plug>Commentary
