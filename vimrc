@@ -64,8 +64,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \ 'go': ['gofmt'],
   \ 'elixir': ['mix_format'],
-  \ 'typescript': ['prettier_standard', 'eslint'],
-  \ 'javascript':  ['prettier_standard', 'prettier', 'eslint'],
+  \ 'typescript': ['prettier', 'eslint'],
+  \ 'javascript':  ['prettier', 'eslint'],
   \ 'css': ['prettier']
   \ }
 let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
