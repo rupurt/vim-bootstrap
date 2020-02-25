@@ -1,4 +1,22 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "json",
+    "elixir",
+    "go",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown"
+  ],
+
+  "prettier.eslintIntegration": true,
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
   "languageserver": {
     "elixir": {
       "command": "elixir-ls",
@@ -6,6 +24,7 @@
     },
     "golang": {
       "command": "gopls",
+      "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     }
   }

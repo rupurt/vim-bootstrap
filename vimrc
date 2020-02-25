@@ -52,52 +52,51 @@ Plug 'terryma/vim-multiple-cursors'
 " Lazy loaded language packs
 Plug 'sheerun/vim-polyglot'
 
-" Async linting/fixing engine
-Plug 'w0rp/ale'
-let g:ale_linters = {
-  \ 'go': ['gopls'],
-  \ 'elixir': ['elixir-ls', 'mix'],
-  \ 'typescript': ['eslint', 'tsserver'],
-  \ 'javascript': ['prettier_standard', 'prettier', 'eslint'],
-  \ 'css': ['prettier']
-  \ }
-let g:ale_fixers = {
-  \ 'go': ['gofmt'],
-  \ 'elixir': ['mix_format'],
-  \ 'typescript': ['prettier', 'eslint'],
-  \ 'javascript':  ['prettier', 'eslint'],
-  \ 'css': ['prettier']
-  \ }
-let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
-let g:ale_fix_on_save = 1
-nmap <leader>d <Plug>(ale_go_to_definition)
-
 " Async intellisense
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+nmap <leader>d <Plug>(coc-definition)
+nmap <leader>t <Plug>(coc-type-definition)
+nmap <leader>i <Plug>(coc-implementation)
+nmap <leader>r <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
+" Format selected code
+vmap F <Plug>(coc-format-selected)
+" coc-eslint doesn't work with prettier so manually execute autofix
+" https://github.com/neoclide/coc-eslint/issues/7
+autocmd BufWritePre *.ts :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.tsx :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.js :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.jsx :call CocAction('runCommand', 'eslint.executeAutofix')
+" Organize imports for golang & typescript
+autocmd BufWritePre *.go  :call CocAction('runCommand', 'editor.action.organizeImport')
+" tsserver messes with prettier
+" autocmd BufWritePre *.ts  :call CocAction('runCommand', 'tsserver.organizeImports')
+" autocmd BufWritePre *.tsx :call CocAction('runCommand', 'tsserver.organizeImports')
 
 " Fast & minimal powerline
 Plug 'itchyny/lightline.vim'
-
-" Display ale indicators in lightline
-Plug 'maximbaz/lightline-ale'
 let g:lightline = {}
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
+
+" Display CoC indicators in lightline
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
       \ }
-let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
 
 " Pastel color schemes with sensible highlighting
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
