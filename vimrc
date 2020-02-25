@@ -63,7 +63,6 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-eslint',
 \ 'coc-prettier',
-\ 'coc-go',
 \ 'coc-elixir'
 \ ]
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
