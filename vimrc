@@ -52,7 +52,20 @@ Plug 'terryma/vim-multiple-cursors'
 " Lazy loaded language packs
 Plug 'sheerun/vim-polyglot'
 
-" Async intellisense
+" Use LSP's within neovim/vim8
+let g:coc_global_extensions = [
+\ 'coc-ultisnips',
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-yaml',
+\ 'coc-json',
+\ 'coc-eslint',
+\ 'coc-prettier',
+\ 'coc-go',
+\ 'coc-elixir'
+\ ]
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 nmap <leader>d <Plug>(coc-definition)
