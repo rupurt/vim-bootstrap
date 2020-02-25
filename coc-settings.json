@@ -1,4 +1,6 @@
 {
+  "elixir.pathToElixirLS": "~/workspace/elixir-ls/rel/language_server.sh",
+
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
@@ -18,10 +20,6 @@
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
   "languageserver": {
-    "elixir": {
-      "command": "elixir-ls",
-      "filetypes": ["elixir", "eelixir"]
-    },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
