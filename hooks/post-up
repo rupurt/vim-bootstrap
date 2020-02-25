@@ -1,8 +1,21 @@
 #!/bin/sh
 
-if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-  mkdir -p $HOME/.vim/bundle/
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+  mkdir -p $HOME/.vim/autoload/
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim -u $HOME/.vimrc +PluginInstall +qa -
-vim -u $HOME/.vimrc +PluginClean! +qa -
+
+if [ ! -e $HOME/.vim/after/syntax ]; then
+  mkdir -p $HOME/.vim/after/syntax/
+fi
+echo "highlight ALEWarning ctermbg=DarkGrey" > $HOME/.vim/after/syntax/elixir.vim
+
+if [ ! -e $HOME/.config/nvim/coc-settings.json ]; then
+  mkdir -p $HOME/.config/nvim/
+fi
+cp ../coc-settings.json ~/.vim/
+ln -sf $HOME/.vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+
+vim -u $HOME/.vimrc +PlugInstall +qa -
+vim -u $HOME/.vimrc +PlugClean! +qa -

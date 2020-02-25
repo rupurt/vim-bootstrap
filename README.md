@@ -40,7 +40,7 @@ git pull
 
 Then just re-run the install steps, as they update as well.
 
-## Make your own cuctomizations
+## Make your own customizations
 
 Put your project sharable customizations in dotfiles appended with `.shared`:
 
@@ -61,12 +61,11 @@ Heavy influence from [vimified](https://github.com/zaiste/vimified)
 
 ## Discovery
 ```
-:Ag <search_term> = project pattern search (use Ag, install via brew)
+,f = fuzzy file find (via FZF)
+,b = fuzzy open buffer find (via FZF)
+:Ag <search_term> = project pattern search (use Ag with FZF, install via brew). Mark files TAB or all files with ALT-A. <CR> to open in quickfix
 ,a = call Rg/Ag using the current word under the cursor (or visually selected)
-,f = fuzzy file find (via CTRL-P)
-,b = fuzzy open buffer find (via CTRL-P)
-,F = fuzzy file find after resetign cache
-<f5> = while in fuzzy finder, refresh cache
+,d = go to definition using Ale for configured language servers
 ```
 
 ## General
@@ -78,8 +77,6 @@ Heavy influence from [vimified](https://github.com/zaiste/vimified)
 ,n = rename file
 ,qo = open quickfix
 ,qc = close quickfix
-[<space> = addline above
-]<space> = addline below
 <tab> = autocomplete (except when prefixed with whitespace)
 <tab> = <tab> (only when prefixed with whitespace)
 tt = toggle fullscreen mode on
@@ -112,10 +109,9 @@ ty = toggle fullscreen mode off
 ,g = git blame
 ```
 
-### Nerd Tree
+### Netrw
 ```
-\ = toggle tree
-<shift>\ = toggle tree and focus on current file
+\ = toggle Explore
 ```
 
 ### Commentary
@@ -126,32 +122,6 @@ ty = toggle fullscreen mode off
 ### regreplop
 ```
 <ctrl>k = paste over, keep original buffer
-```
-
-### Vim Rspec + dispatch
-using vim-dispatch `Dispatch`:
-this will capture results and display in quickfix
-```
-<leader>t = run current spec + line in iTerm
-<leader>s = run current spec file in iTerm
-<leader>l = run last spec in iTerm
-```
-
-using vim-dispatch `Start`:
-this will not capture results
-```
-<leader>dt = run current spec + line in iTerm
-<leader>ds = run current spec file in iTerm
-<leader>dl = run last spec in iTerm
-```
-
-### ctags
-*requires ctags installed*
-*recommend use of gem-ctags for ruby*
-```
-<ctrl>] = find first tag match
-<ctrl>\ = find next tag match
-,rt = regenerate tags file
 ```
 
 ### text object expansion
