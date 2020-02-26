@@ -77,17 +77,25 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 " Format selected code
 vmap F <Plug>(coc-format-selected)
+" Organize imports for golang
+autocmd BufWritePre *.go  :call CocAction('runCommand', 'editor.action.organizeImport')
 " coc-eslint doesn't work with prettier so manually execute autofix
 " https://github.com/neoclide/coc-eslint/issues/7
-autocmd BufWritePre *.ts :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePre *.tsx :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePre *.js :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePre *.jsx :call CocAction('runCommand', 'eslint.executeAutofix')
-" Organize imports for golang & typescript
-autocmd BufWritePre *.go  :call CocAction('runCommand', 'editor.action.organizeImport')
-" tsserver messes with prettier
-" autocmd BufWritePre *.ts  :call CocAction('runCommand', 'tsserver.organizeImports')
-" autocmd BufWritePre *.tsx :call CocAction('runCommand', 'tsserver.organizeImports')
+autocmd BufWritePost *.ts :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePost *.tsx :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePost *.js :call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePost *.jsx :call CocAction('runCommand', 'eslint.executeAutofix')
+
+" Async linting/fixing engine
+Plug 'w0rp/ale'
+let g:ale_linters = {
+  \ 'elixir': ['elixir-ls', 'mix']
+  \ }
+let g:ale_fixers = {
+  \ 'elixir': ['mix_format']
+  \ }
+let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
+let g:ale_fix_on_save = 1
 
 " Fast & minimal powerline
 Plug 'itchyny/lightline.vim'
