@@ -89,7 +89,7 @@ autocmd BufWritePost *.jsx :call CocAction('runCommand', 'eslint.executeAutofix'
 " Async linting/fixing engine
 Plug 'w0rp/ale'
 let g:ale_linters = {
-  \ 'elixir': ['elixir-ls', 'mix']
+  \ 'elixir': ['elixir-ls']
   \ }
 let g:ale_fixers = {
   \ 'elixir': ['mix_format']
