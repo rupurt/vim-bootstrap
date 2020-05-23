@@ -59,6 +59,7 @@ let g:coc_global_extensions = [
 \ 'coc-tsserver',
 \ 'coc-html',
 \ 'coc-css',
+\ 'coc-go',
 \ 'coc-yaml',
 \ 'coc-json',
 \ 'coc-eslint',
@@ -78,7 +79,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 " Format selected code
 vmap F <Plug>(coc-format-selected)
 " Organize imports for golang
-autocmd BufWritePre *.go  :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 " coc-eslint doesn't work with prettier so manually execute autofix
 " https://github.com/neoclide/coc-eslint/issues/7
 autocmd BufWritePost *.ts :call CocAction('runCommand', 'eslint.executeAutofix')
