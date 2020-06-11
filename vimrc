@@ -68,16 +68,30 @@ let g:coc_global_extensions = [
 \ ]
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" Shared LSP commands
 nmap <leader>d <Plug>(coc-definition)
 nmap <leader>t <Plug>(coc-type-definition)
 nmap <leader>i <Plug>(coc-implementation)
 nmap <leader>r <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
 " Format selected code
 vmap F <Plug>(coc-format-selected)
+
 " Organize imports for golang
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 " coc-eslint doesn't work with prettier so manually execute autofix
