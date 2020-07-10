@@ -14,10 +14,14 @@
     "markdown"
   ],
 
-  "prettier.eslintIntegration": true,
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
 
   "languageserver": {
     "golang": {
