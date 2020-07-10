@@ -63,16 +63,15 @@ let g:coc_global_extensions = [
 \ 'coc-yaml',
 \ 'coc-json',
 \ 'coc-eslint',
-\ 'coc-prettier',
 \ 'coc-elixir'
 \ ]
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" Shared LSP commands
-nmap <leader>d <Plug>(coc-definition)
-nmap <leader>t <Plug>(coc-type-definition)
-nmap <leader>i <Plug>(coc-implementation)
-nmap <leader>r <Plug>(coc-references)
+" Code Navigation
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -85,6 +84,15 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Applying codeAction to the selected region.
+nmap <leader>ca  <Plug>(coc-codeaction-selected)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>cf  <Plug>(coc-fix-current)
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for refactor current word
@@ -92,25 +100,11 @@ nmap <leader>rf <Plug>(coc-refactor)
 " Format selected code
 vmap F <Plug>(coc-format-selected)
 
-" Organize imports for golang
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-" coc-eslint doesn't work with prettier so manually execute autofix
-" https://github.com/neoclide/coc-eslint/issues/7
-autocmd BufWritePost *.ts :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePost *.tsx :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePost *.js :call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePost *.jsx :call CocAction('runCommand', 'eslint.executeAutofix')
-
-" Async linting/fixing engine
-Plug 'w0rp/ale'
-let g:ale_linters = {
-  \ 'elixir': ['elixir-ls']
-  \ }
-let g:ale_fixers = {
-  \ 'elixir': ['mix_format']
-  \ }
-let g:ale_elixir_elixir_ls_release = expand($HOME . '/workspace/elixir-ls/rel')
-let g:ale_fix_on_save = 1
+" Specific LS commands
+" Generate unit tests for file
+autocmd FileType go nmap gf :CocCommand go.test.generate.file<cr>
+" Generate unit tests for file
+autocmd FileType go nmap ge :CocCommand go.test.generate.exported<cr>
 
 " Fast & minimal powerline
 Plug 'itchyny/lightline.vim'
@@ -225,18 +219,6 @@ if has('persistent_undo')
   set undofile
 endif
 
-"
-" Formatting
-"
-"""""""""""""""""""""""""""""""""""""""
-
-" strip trailing whitespace on save
-function! StripTrailingWhitespace()
-  let save_cursor = getpos('.')
-  %s/\s\+$//e
-  call setpos('.', save_cursor)
-endfunction
-autocmd BufWritePre *.rb,*.yml,*.js,*jsx,*.ts,*.tsx,*.exs,*.ex,*.go,*.rs,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.coffee call StripTrailingWhitespace()
 
 "
 " Keybindings
